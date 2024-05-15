@@ -2,14 +2,16 @@
 
 import {defineComponent} from "vue";
 import Banner from "@/components/Banner.vue";
+import ConteudoPrincipal from "@/components/ConteudoPrincipal.vue";
 
 export default defineComponent({
-  components: {Banner}
+  components: {ConteudoPrincipal, Banner}
 })
 </script>
 
 <template>
   <Banner/>
+  <ConteudoPrincipal/>
 </template>
 
 
