@@ -6,9 +6,11 @@ import IngredienteSelecionavel from "@/components/IngredienteSelecionavel.vue";
 
 export default {
   components: {IngredienteSelecionavel, Tag},
+  emits:['adicionarIngrediente', 'removerIngrediente'],
   props:{
     categoria: { type: Object as PropType<ICategoria>, required: true }
   }
+
 }
 </script>
 

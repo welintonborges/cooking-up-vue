@@ -1,7 +1,7 @@
 <script lang="ts">
 
-import Tag from "@/components/Tag.vue";
-import {PropType} from "vue";
+import Tag from "./Tag.vue";
+import type { PropType } from 'vue';
 
 export default {
   components: {Tag},
@@ -17,10 +17,11 @@ export default {
   <section>
       <span class="subtitulo-lg sua-lista-texto" >
        Sua lista:
+        {{ingredientes}}
       </span>
     <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
       <li v-for="ingrediente in ingredientes" :key="ingrediente" >
-        <Tag :texto="ingrediente" :ativa="true"/>
+        <Tag :texto="ingrediente" ativa/>
       </li>
     </ul>
     <p v-else class="paragrafo lista-vazia">

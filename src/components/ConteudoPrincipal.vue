@@ -1,17 +1,36 @@
-<script setup  lang="ts">
+<script   lang="ts">
 import { ref } from 'vue';
-import SeleccionarIngredientes from "@/components/SelecionarIngredientes.vue";
 import Tag from "@/components/Tag.vue";
+import SuaLista from "@/components/SuaLista.vue";
+import SelecionarIngredientes from "@/components/SelecionarIngredientes.vue";
 
-
-    const ingredientes = ref<string[]>([]);
-
-    function adicionarIngrediente(ingrediente: string) {
-        ingredientes.value.push(ingrediente);
-      }
-    function removerIngrediente(ingrediente: string) {
-        ingredientes.value = ingredientes.value.filter(iLista => ingrediente !== iLista);
-      }
+export default {
+  data() {
+    return {
+      ingredientes: [] as string[]
+    };
+  },
+  components: { SelecionarIngredientes, Tag, SuaLista },
+  methods: {
+    adicionarIngrediente(ingrediente: string) {
+      console.log("adicionarIngrediente", ingrediente);
+      this.ingredientes.push(ingrediente)
+    },
+    removerIngrediente(ingrediente: string) {
+      this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista);
+    },
+  }
+}
+    //
+    // const ingredientes = ref<string[]>([]);
+    //
+    // function adicionarIngrediente(ingrediente: string) {
+    //   console.log("igre --> ", ingrediente);
+    //     ingredientes.value.push(ingrediente);
+    //   }
+    // function removerIngrediente(ingrediente: string) {
+    //     thisingredientes.value = ingredientes.value.filter(iLista => ingrediente !== iLista);
+    //   }
 
 
 </script>
@@ -24,7 +43,7 @@ import Tag from "@/components/Tag.vue";
       </span>
       <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
         <li v-for="ingrediente in ingredientes" :key="ingrediente" >
-          <Tag :texto="ingrediente" :ativa="true"/>
+          <Tag :texto="ingrediente" ativa/>
         </li>
       </ul>
       <p v-else class="paragrafo lista-vazia">
@@ -33,7 +52,7 @@ import Tag from "@/components/Tag.vue";
       </p>
     </section>
 
-    <SeleccionarIngredientes  @adicionar-ingrediente="adicionarIngrediente"
+    <SelecionarIngredientes  @adicionar-ingrediente="adicionarIngrediente"
                               @remover-ingrediente="removerIngrediente"
 
     />
