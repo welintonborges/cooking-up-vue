@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import Tag from "@/components/Tag.vue";
 import SuaLista from "@/components/SuaLista.vue";
 import SelecionarIngredientes from "@/components/SelecionarIngredientes.vue";
-import MostraReceita from "@/components/MostraReceita.vue";
+import MostraReceita from "@/components/MostraReceitas.vue";
 
 type Pagina  = 'SelecionarIngredientes' | 'MostraReceita';
 
@@ -17,7 +17,6 @@ export default {
   components: {MostraReceita, SelecionarIngredientes, Tag, SuaLista },
   methods: {
     adicionarIngrediente(ingrediente: string) {
-      console.log("adicionarIngrediente", ingrediente);
       this.ingredientes.push(ingrediente)
     },
     removerIngrediente(ingrediente: string) {
@@ -59,14 +58,18 @@ export default {
       </p>
     </section>
 
+    <KeepAlive include="SelecionarIngredientes">
     <SelecionarIngredientes v-if="conteudo == 'SelecionarIngredientes'"
         @adicionar-ingrediente="adicionarIngrediente"
         @remover-ingrediente="removerIngrediente"
         @buscar-receitas="navegar('MostraReceitas')"
     />
-    <MostraReceita v-else="conteudo == 'MostraReceita'"
+      <MostraReceita v-else-if="conteudo == 'MostraReceitas'"
+                     :ingredientes="ingredientes"
+                     @editar-receitas="navegar('SelecionarIngredientes')"
+                     />
 
-    />
+    </KeepAlive>
   </main>
 </template>
 

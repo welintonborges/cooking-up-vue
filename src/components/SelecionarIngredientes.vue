@@ -1,21 +1,21 @@
 <script lang="ts">
-import {obterCategoria} from '@/http/index.vue'
+import {obterCategorias} from '@/http/index.vue'
 import ICategoria from "@/interfaces/ICategoria.vue";
 import CardCategoria from "@/components/CardCategoria.vue";
 import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
 
 export default {
-  name: "selecionarIngredientes",
-  components: {CardCategoria, BotaoPrincipal },
-  data(){
-    return{
+  name: "SelecionarIngredientes",
+  data() {
+    return {
       categorias: [] as ICategoria[]
-    }
+    };
   },
-  async created(){
-    this.categorias = await obterCategoria();
+  async created() {
+    this.categorias = await obterCategorias();
   },
-  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas' ],
+  components: { CardCategoria, BotaoPrincipal },
+  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
 }
 </script>
 
