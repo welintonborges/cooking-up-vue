@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider &&  vite",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider &&  vite build",
+    "preview": "export NODE_OPTIONS=--openssl-legacy-provider &&  vite preview"
   },
   "dependencies": {
     "vue": "^3.4.21"
